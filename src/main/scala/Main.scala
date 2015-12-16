@@ -8,10 +8,11 @@ import sys.process._
 object Main extends App{
 
   val driver = new HtmlUnitDriver
-  driver.get("https://google.com/search?q=hoge&tbm=isch")
-  val imgs = driver.findElementsByTagName("img")
+  driver.get("https://google.com/search?q=cardcaptor&tbm=isch")
+  driver.findElementsByTagName("img")
     .map(img => img.getAttribute("src"))
     .zipWithIndex
     .foreach{case (url,index) => new URL(url) #> new File(index+".jpg")!!}
+  println(driver.getPageSource())
 
 }
